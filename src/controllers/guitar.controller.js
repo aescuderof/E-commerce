@@ -67,7 +67,7 @@ exports.updateCollar = async (req, res) => {
         if (!updatedCollar) {
             return res.status(404).json({ error: 'Collar not found' });
         }
-        return res.status(200).json({ collarraActulizada: updatedCollar });
+        return res.status(200).json({ collarraActualizada: updatedCollar });
     } catch (error) {
         return res.status(500).json({
             message: 'Error updating collar',
@@ -76,15 +76,15 @@ exports.updateCollar = async (req, res) => {
     }
 };
 
-// borrar collarra
+// borrar collar
 exports.deleteCollar = async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ message: 'Formato de id inválido' });
         }
-        const deletedCollar = await Collar.findByIdAndDelete(id);
-        if (!deletedCollar) {
+        const deleteCollar = await Collar.findByIdAndDelete(id);
+        if (!deleteCollar) {
             return res.status(404).json({ error: 'Collar not found' });
         }
         return res.status(200).json({ message: 'Collar deleted successfully' });
@@ -103,8 +103,8 @@ exports.deleteCollar = async (req, res) => {
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ message: 'Formato de id inválido' });
         }
-        const deletedCollar = await Collar.findByIdAndDelete(id);
-        if (!deletedCollar) {
+        const deleteCollar = await Collar.findByIdAndDelete(id);
+        if (!deleteCollar) {
             return res.status(404).json({ error: 'Collar not found' });
         }
         return res.status(200).json({ message: 'Collar deleted successfully' });
