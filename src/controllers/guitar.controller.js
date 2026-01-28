@@ -1,116 +1,116 @@
 const mongoose = require('mongoose');
-const Guitar = require('../models/Guitar');
-// traer modelo de Guitar
-exports.getAllGuitars = async (req, res) => {
+const Collar = require('../models/Collar');
+// traer modelo de Collares
+exports.getAllCollares = async (req, res) => {
     try {
-        const guitars = await Guitar.find({});
-        return res.status(200).json({ guitars });
+        const collares = await Collar.find({});
+        return res.status(200).json({ collares });
     } catch (error) {
         return res.status(500).json({
-            message: 'Error retrieving guitars',
+            message: 'Error encontrando collares',
             error: error.message,
         });
     }
 };
 
-// obtener una guitarra por id
-exports.getGuitarById = async (req, res) => {
+// obtener una collar por id
+exports.getCollarById = async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ message: 'Formato de id inválido' });
         }
-        const guitar = await Guitar.findById(id);
-        if (!guitar) {
-            return res.status(404).json({ error: 'Guitarra no encontrada' });
+        const collar = await Collar .findById(id);
+        if (!collar) {
+            return res.status(404).json({ error: 'Collar no encontrado' });
         }
-        return res.status(200).json({ guitar });
+        return res.status(200).json({ collar });
     } catch (error) {
         return res.status(500).json({
-            message: 'Error buscando guitarra por ID',
+            message: 'Error buscando collar por ID',
             error: error.message,
         });
     }
 };
 
 // completar los controladores para las rutas POST, PUT y DELETE
-exports.createGuitar = async (req, res) => {
+exports.createCollar = async (req, res) => {
      try {
         const { name, price, description } = req.body;
-        const newGuitar = await Guitar.create({ name, price, description });
+        const newCollar = await Collar.create({ name, price, description });
         
-        if (!newGuitar) return res.status(400).json({ error: 'no fue posible crear la guitarra' });
+        if (!newCollar) return res.status(400).json({ error: 'no fue posible crear la collar' });
         
-        return res.status(201).json( {datos: newGuitar });
+        return res.status(201).json( {datos: newCollar });
 
     } catch (error) {
         return res.status(500).json({
-            message: 'Error creating guitar',
+            message: 'Error creando collar',
             error: error.message,
         });
     }
 };
 
 // completar los controladores para las rutas POST, PUT y DELETE
-exports.updateGuitar = async (req, res) => {
+exports.updateCollar = async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ message: 'Formato de id inválido' });
         }
         const { name, price, description } = req.body;
-        const updatedGuitar = await Guitar.findByIdAndUpdate(
+        const updatedCollar = await Collar.findByIdAndUpdate(
             id,
             { name, price, description },
             { new: true, runValidators: true }
         );
-        if (!updatedGuitar) {
-            return res.status(404).json({ error: 'Guitar not found' });
+        if (!updatedCollar) {
+            return res.status(404).json({ error: 'Collar not found' });
         }
-        return res.status(200).json({ guitarraActulizada: updatedGuitar });
+        return res.status(200).json({ collarraActulizada: updatedCollar });
     } catch (error) {
         return res.status(500).json({
-            message: 'Error updating guitar',
+            message: 'Error updating collar',
             error: error.message,
         });
     }
 };
 
-// borrar guitarra
-exports.deleteGuitar = async (req, res) => {
+// borrar collarra
+exports.deleteCollar = async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ message: 'Formato de id inválido' });
         }
-        const deletedGuitar = await Guitar.findByIdAndDelete(id);
-        if (!deletedGuitar) {
-            return res.status(404).json({ error: 'Guitar not found' });
+        const deletedCollar = await Collar.findByIdAndDelete(id);
+        if (!deletedCollar) {
+            return res.status(404).json({ error: 'Collar not found' });
         }
-        return res.status(200).json({ message: 'Guitar deleted successfully' });
+        return res.status(200).json({ message: 'Collar deleted successfully' });
     } catch (error) {
         return res.status(500).json({
-            message: 'Error deleting guitar',
+            message: 'Error deleting collar',
             error: error.message,
         });
     }
 };
 
 // completar los controladores para las rutas POST, PUT y DELETE
-exports.deleteGuitar = async (req, res) => {
+exports.deleteCollar = async (req, res) => {
     try {
         const { id } = req.params;
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return res.status(400).json({ message: 'Formato de id inválido' });
         }
-        const deletedGuitar = await Guitar.findByIdAndDelete(id);
-        if (!deletedGuitar) {
-            return res.status(404).json({ error: 'Guitar not found' });
+        const deletedCollar = await Collar.findByIdAndDelete(id);
+        if (!deletedCollar) {
+            return res.status(404).json({ error: 'Collar not found' });
         }
-        return res.status(200).json({ message: 'Guitar deleted successfully' });
+        return res.status(200).json({ message: 'Collar deleted successfully' });
     } catch (error) {
         return res.status(500).json({
-            message: 'Error deleting guitar',
+            message: 'Error deleting collar',
             error: error.message,
         });
     }   
