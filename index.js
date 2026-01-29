@@ -7,12 +7,12 @@ const connectDB = require('./src/config/db');
 const cors = require('cors');
 
 const auth = require('./src/middleware/authorization');
-const guitarRouter = require('./src/routes/guitar.routes');
+const collarRouter = require('./src/routes/collar.routes');
 
-const Guitar = require('./src/models/Guitar');
+const Collar = require('./src/models/Collar');
 const User = require('./src/models/User');
 const Cart = require('./src/models/Cart');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
@@ -20,6 +20,7 @@ connectDB();
 
 const whitelist = [
     'http://localhost:3000', 
+    'http://localhost:4000',
     'http://localhost:5173',
     'http://181.43.121.8:5173',
     'http://181.43.121.8:3000',
@@ -44,7 +45,7 @@ credentials: true
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use('/guitars', guitarRouter);
+app.use('/collars', collarRouter);
 
 app.get('/', (req, res) => {
     return res.status(200).json({ ok: true });

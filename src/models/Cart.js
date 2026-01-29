@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { propfind } = require('../routes/guitar.routes');
 
 const cartSchema = new mongoose.Schema
 ({
