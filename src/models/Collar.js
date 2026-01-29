@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 
-const guitarSchema = new mongoose.Schema({
+const collarSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -25,6 +25,6 @@ const guitarSchema = new mongoose.Schema({
 
 );
 
-const Guitar = mongoose.model('Guitar', guitarSchema);
+const Collar = mongoose.model('Collar', collarSchema);
 
-module.exports = Guitar;
+module.exports = Collar;
