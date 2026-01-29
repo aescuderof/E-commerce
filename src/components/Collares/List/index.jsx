@@ -1,4 +1,4 @@
-const CollaresList = () => {
+const CollarList = () => {
     return (
         <div>
             Lista de Collares
@@ -6,4 +6,4 @@ const CollaresList = () => {
     );
 };
 
-export default CollaresList;
+export default CollarList;
