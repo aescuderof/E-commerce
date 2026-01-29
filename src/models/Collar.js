@@ -1,7 +1,25 @@
 
 const mongoose = require('mongoose');
 
-const collarSchema = new mongoose.Schema({
+const collarSchema = new mongoose.Schema(
+    {
+        idProd: {
+        type: String,
+        required: true,
+        unique: true,
+        },
+
+        priceID: {
+        type: String,
+        required: true,
+       
+        },
+
+        currency: {
+        type: String,
+        required: true,
+        },
+
     name: {
         type: String,
         required: true,
@@ -16,6 +34,17 @@ const collarSchema = new mongoose.Schema({
         type: String,
         default: '',
         trim: true,
+    },
+
+    img: {
+        type: String,
+        required: true,
+    },
+
+    slug: {
+        type: String,
+        required: true,
+        unique: true,
     },
 }, 
 

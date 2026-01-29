@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Collar = require('../models/Collar');
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 // traer modelo de Collares
 exports.getAllCollares = async (req, res) => {
     try {
@@ -36,7 +37,22 @@ exports.getCollarById = async (req, res) => {
 // completar los controladores para las rutas POST, PUT y DELETE
 exports.createCollar = async (req, res) => {
      try {
-        const { name, price, description } = req.body;
+        const { name, price, description, img, currency, slug } = req.body;
+        const product = await stripe.products.create({
+            name,
+            description,
+            images: [img],
+            metadata: { 
+                productDescription: description,
+                slug: slug,
+             },
+        });
+        
+        const stripePrice = await stripe.prices.create({
+            unit_amount: price,
+            currency,
+            product: product.id,
+
         const newCollar = await Collar.create({ name, price, description });
         
         if (!newCollar) return res.status(400).json({ error: 'no fue posible crear la collar' });
