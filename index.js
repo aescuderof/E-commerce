@@ -12,7 +12,7 @@ const collarRouter = require('./src/routes/collar.routes');
 const Collar = require('./src/models/Collar');
 const User = require('./src/models/User');
 const Cart = require('./src/models/Cart');
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -24,6 +24,7 @@ const whitelist = [
     'http://localhost:5173',
     'http://181.43.121.8:5173',
     'http://181.43.121.8:3000',
+    'http://181.42.165.20'
   
     
 ];
@@ -45,7 +46,7 @@ credentials: true
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use('/collars', collarRouter);
+app.use('/collares', collarRouter);
 
 app.get('/', (req, res) => {
     return res.status(200).json({ ok: true });

@@ -52,10 +52,22 @@ exports.createCollar = async (req, res) => {
             unit_amount: price,
             currency,
             product: product.id,
+        });
 
-        const newCollar = await Collar.create({ name, price, description });
+
+        const newCollar = await Collar.create({ 
+            idProd: product.id,
+            priceID: stripePrice.id,
+            currency,
+            name: product.name,
+            price: stripePrice.unit_amount,
+            description,
+            img,
+            currency,
+            slug, 
+        });
         
-        if (!newCollar) return res.status(400).json({ error: 'no fue posible crear la collar' });
+        if (!newCollar) return res.status(400).json({ error: 'No fue posible crear la collar' });
         
         return res.status(201).json( {datos: newCollar });
 
