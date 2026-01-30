@@ -1,4 +1,6 @@
+import { useReducer } from 'react';
 import CollarContext from "./CollarContext";
+import CollarReducer from "./CollarReducer";
 
 const CollarState = (props) => {
     const initialState = {

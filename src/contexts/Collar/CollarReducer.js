@@ -1,4 +1,4 @@
-const GuitarReducer = (globalState, action) => {
+const CollarReducer = (globalState, action) => {
     switch (action.type) {
         case "ACTUALIZAR":
             break;
