@@ -1,16 +1,15 @@
 const CollarReducer = (globalState, action) => {
     switch (action.type) {
-        case "ACTUALIZAR":
-            break;
+        case 'OBTENER_COLLARES':
+            return {
+                ...globalState,
+                collares: action.payload,
+            };
+        
 
-        case "LOGOUT":
-            break;
-
-        default:
-            break;
+    default:
+        return globalState;
     }
-
-    return globalState;
 };
 
 export default CollarReducer;
