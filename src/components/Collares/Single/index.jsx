@@ -23,8 +23,16 @@ const SingleCollar = () => {
 
             </section>
 
-        </main>
+            <figure className="mt-8 col-start-2 row-span-2">
+                <img
+                    src={collar.img}
+                    alt={collar.description}
+                    className="w-full object-center object-cover"
+                    />
+                     </figure>
 
-    );
-
-        export default SingleCollar;
+            </main>
+        );
+    };
+    
+    export default SingleCollar;
