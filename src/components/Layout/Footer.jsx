@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
-        <footer className="bg-gray-800 text-white p-4 text-center">
-            &copy; {new Date().getFullYear()} My Website. All rights reserved.
+        <footer className="text-gray-600 text-xs max-w-5xl mx-auto text-center px-4 pt-24 pb-8">
+            <p>&copy; {new Date().getFullYear()} Señorita María. Todos los derechos reservados.</p>
         </footer>
     );
 };

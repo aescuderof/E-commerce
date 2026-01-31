@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 
+// Conectar a MongoDB (sin bloquear si falla)
 connectDB();
 
 const whitelist = [

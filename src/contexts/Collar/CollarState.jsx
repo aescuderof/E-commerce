@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import CollarContext from "./CollarContext";
 import CollarReducer from "./CollarReducer";
-import axioClient from '../../config/axios';
+import axiosClient from '../../config/axios';
 
 const CollarState = (props) => {
     const initialState = {
@@ -10,12 +10,17 @@ const CollarState = (props) => {
                 id: 0,
                 name: 'Collar Kuna',
                 price: 18.000,
+                img: 'https://zazu.cl/cdn/shop/files/Collar_Corazon_Banado_en_Oro.png?v=1725644281&width=1800',
+                description: 'Collar artesanal',
+                
             },
 
             {
                 id: 1,
                 name: 'Collar Kuna 2',
                 price: 18.000,
+                img: 'https://zazu.cl/cdn/shop/files/Collar_Corazon_Banado_en_Oro.png?v=1725644281&width=1800',
+                description: 'Collar artesanal premium',
             },
 
                
@@ -28,7 +33,7 @@ const CollarState = (props) => {
 const getCollares = async () => {
     try {
         const response =  await axioClient.get('/collares');
-        console.log(response);
+        console.log('endpoint obtener collares', response);
 
         dispatch({
             type: 'OBTENER_COLLARES',
@@ -42,7 +47,7 @@ const getCollares = async () => {
     return (
         <CollarContext.Provider 
         value={{ 
-            collares: initialState.collares, 
+            collares: globalState.collares, 
             getCollares,
             }}
         >
